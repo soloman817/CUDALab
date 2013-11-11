@@ -1,0 +1,66 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{B117BC94-3285-4C2F-8235-B3306DC2F26C}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{98E8BD04-3959-4ACD-8ADF-47840B7E7627}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		build.cmd = build.cmd
+		build.fsx = build.fsx
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "templates", "templates", "{44A6BAC5-D182-4AC8-AD15-75544DEDEF94}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "default", "default", "{C466FF81-CB99-4D7A-95CB-30BE0A80DAFB}"
+	ProjectSection(SolutionItems) = preProject
+		templates\default\favicon.ico = templates\default\favicon.ico
+		templates\default\template.html = templates\default\template.html
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "style", "style", "{85CE824D-064D-44D1-A6D1-02B7FA50E7A7}"
+	ProjectSection(SolutionItems) = preProject
+		templates\default\style\bootstrap-combined.2.2.1.min.css = templates\default\style\bootstrap-combined.2.2.1.min.css
+		templates\default\style\bootstrap.2.2.1.min.js = templates\default\style\bootstrap.2.2.1.min.js
+		templates\default\style\jquery-1.8.0.min.js = templates\default\style\jquery-1.8.0.min.js
+		templates\default\style\jquery-ui.1.8.23.min.js = templates\default\style\jquery-ui.1.8.23.min.js
+		templates\default\style\ref-style.css = templates\default\style\ref-style.css
+		templates\default\style\ref-tips.js = templates\default\style\ref-tips.js
+		templates\default\style\style.css = templates\default\style\style.css
+		templates\default\style\tips.js = templates\default\style\tips.js
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "source", "source", "{F1B33433-C3DD-4906-AA0D-4756F32DA010}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01.Basic", "01.Basic", "{A45C9ADC-AB2F-4A38-BE32-48C056F5D2F2}"
+	ProjectSection(SolutionItems) = preProject
+		source\01.Basic\00.Index.md = source\01.Basic\00.Index.md
+		source\01.Basic\01.Getting Started.fsx = source\01.Basic\01.Getting Started.fsx
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "images", "images", "{86B13E0C-5A1D-4708-8DFE-A96964D56D27}"
+	ProjectSection(SolutionItems) = preProject
+		images\cubes_32x32.png = images\cubes_32x32.png
+		images\cubes_512x512.png = images\cubes_512x512.png
+		images\cubes_64x64.png = images\cubes_64x64.png
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C466FF81-CB99-4D7A-95CB-30BE0A80DAFB} = {44A6BAC5-D182-4AC8-AD15-75544DEDEF94}
+		{85CE824D-064D-44D1-A6D1-02B7FA50E7A7} = {C466FF81-CB99-4D7A-95CB-30BE0A80DAFB}
+		{A45C9ADC-AB2F-4A38-BE32-48C056F5D2F2} = {F1B33433-C3DD-4906-AA0D-4756F32DA010}
+	EndGlobalSection
+EndGlobal
