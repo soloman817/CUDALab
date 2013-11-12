@@ -6,7 +6,7 @@ When developing CUDA kernels, we usually care about two things:
 - Correctness
 - Performance
 
-Alea.cuBase provides some utilties to help you do these things easier though
+Alea.cuBase provides some utilities to help you do these things easier through
 `Alea.CUDA.Utilities.TestUtil` module.
 *)
 
