@@ -64,7 +64,7 @@ type Folder(parent:Document option, srcPath:string) =
     inherit Document(parent, srcPath)
 
     let prefix, name, order = parent |> function
-        | None -> "", "Manual", 0
+        | None -> "", projectName, 0
         | Some(parent) ->
             let order, name, filename = Path.GetFileName(srcPath) |> normalizeDocumentName
             let prefix = sprintf "%s%s-" parent.Prefix filename
@@ -156,14 +156,12 @@ type ScriptPage(parent:Document option, srcPath:string) =
         let exitcode, stdout, stderr =
             use p = new Process()
             p.StartInfo.FileName <- "fsi"
-            p.StartInfo.Arguments <- sprintf "\"%s\"" (Path.GetFileName(srcPath))
+            p.StartInfo.Arguments <- sprintf "-O \"%s\"" (Path.GetFileName(srcPath))
             p.StartInfo.WorkingDirectory <- (Path.GetDirectoryName(srcPath))
             p.StartInfo.CreateNoWindow <- false
             p.StartInfo.UseShellExecute <- false
             p.StartInfo.RedirectStandardOutput <- true
             p.StartInfo.RedirectStandardError <- true
-            //printfn "%A" p.StartInfo.Arguments
-            //printfn "%A" p.StartInfo.WorkingDirectory
             if not (p.Start()) then failwithf "Fail to run %s" srcPath
             let stdout = p.StandardOutput.ReadToEnd()
             let stderr = p.StandardError.ReadToEnd()
