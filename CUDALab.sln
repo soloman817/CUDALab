@@ -45,6 +45,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01.Basic", "01.Basic", "{A4
 	ProjectSection(SolutionItems) = preProject
 		source\01.Basic\00.Index.md = source\01.Basic\00.Index.md
 		source\01.Basic\01.Getting Started.fsx = source\01.Basic\01.Getting Started.fsx
+		source\01.Basic\02.Performance Test.fsx = source\01.Basic\02.Performance Test.fsx
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "images", "images", "{86B13E0C-5A1D-4708-8DFE-A96964D56D27}"
