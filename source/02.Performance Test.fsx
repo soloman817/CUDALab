@@ -10,7 +10,7 @@ Alea.cuBase provides some utilities to help you do these things easier through
 `Alea.CUDA.Utilities.TestUtil` module.
 *)
 
-#I @"..\..\packages\Alea.cuBase\lib\net40"
+#I @"..\packages\Alea.cuBase\lib\net40"
 #r "Alea.CUDA.dll"
 
 open System

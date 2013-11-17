@@ -11,7 +11,7 @@ Alea.cuBase shipped with a single assembly `Alea.CUDA.dll`. It supports both 32b
 process. You can install it via _NuGet Gallery_. In this script, the first step is to reference
 `Alea.CUDA.dll`.
 *)
-#I @"..\..\packages\Alea.cuBase\lib\net40"
+#I @"..\packages\Alea.cuBase\lib\net40"
 #r "Alea.CUDA.dll"
 
 (**

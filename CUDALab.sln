@@ -40,12 +40,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "style", "style", "{85CE824D
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "source", "source", "{F1B33433-C3DD-4906-AA0D-4756F32DA010}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01.Basic", "01.Basic", "{A45C9ADC-AB2F-4A38-BE32-48C056F5D2F2}"
 	ProjectSection(SolutionItems) = preProject
-		source\01.Basic\00.Index.md = source\01.Basic\00.Index.md
-		source\01.Basic\01.Getting Started.fsx = source\01.Basic\01.Getting Started.fsx
-		source\01.Basic\02.Performance Test.fsx = source\01.Basic\02.Performance Test.fsx
+		source\01.Getting Started.fsx = source\01.Getting Started.fsx
+		source\02.Performance Test.fsx = source\02.Performance Test.fsx
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "images", "images", "{86B13E0C-5A1D-4708-8DFE-A96964D56D27}"
@@ -62,6 +59,5 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{C466FF81-CB99-4D7A-95CB-30BE0A80DAFB} = {44A6BAC5-D182-4AC8-AD15-75544DEDEF94}
 		{85CE824D-064D-44D1-A6D1-02B7FA50E7A7} = {C466FF81-CB99-4D7A-95CB-30BE0A80DAFB}
-		{A45C9ADC-AB2F-4A38-BE32-48C056F5D2F2} = {F1B33433-C3DD-4906-AA0D-4756F32DA010}
 	EndGlobalSection
 EndGlobal
