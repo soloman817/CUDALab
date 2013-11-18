@@ -1,6 +1,8 @@
 #I @"packages\FAKE\tools"
-#I @"Packages\FSharp.Formatting\lib\net40"
-#I @"packages\RazorEngine\lib\net40"
+//#I @"packages\FSharp.Formatting\lib\net40"
+//#I @"packages\RazorEngine\lib\net40"
+// Currently I used a customized FSharp.Formatting library to support mathjax
+#I @"misc\fsformatting"
 
 #r "FakeLib.dll"
 #r "RazorEngine.dll"
