@@ -1,7 +1,7 @@
 # CUDA Lab
 
 There is a live website of this project at [http://www.aleacubase.com/cudalab](http://www.aleacubase.com/cudalab).
-You can also folk or clone the source code from [GitHub](https://github.com/soloman817/CUDALab).
+You can also fork or clone the source code from [GitHub](https://github.com/soloman817/CUDALab).
 
 The project targets coding [Alea.cuBase](http://www.quantalea.net) examples using F# scripts.
 [Alea.cuBase](http://www.quantalea.net) is a language integrated compiler which allows you
