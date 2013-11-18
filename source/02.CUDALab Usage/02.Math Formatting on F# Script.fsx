@@ -1,14 +1,14 @@
 (**
 # Math Formatting on F# Script
 
-This page is to test new feature of [FSharp.Formatting](http://tpetricek.github.io/FSharp.Formatting/)
-which can use [mathjax](http://www.mathjax.org/) to render latex math. The extended FSharp.Formatting
-markdown support two styles:
+This page is to test a new feature of [FSharp.Formatting](http://tpetricek.github.io/FSharp.Formatting/)
+which can use [mathjax](http://www.mathjax.org/) to render mathematical formulas written in LaTeX. 
+The extended FSharp.Formatting markdown supports two styles:
 
-- to write an inline math: using `$ {latex} $`
-- to write a block of math: start a block by first line `$$$`
+- inline math: using `$ {latex} $`
+- block mode math: start a block by first line `$$$`
 
-Source of this page could be found [here](https://github.com/soloman817/CUDALab/blob/master/source/02.CUDALab%20Usage/02.Math%20Formatting%20on%20F%23%20Script.fsx).
+The source of this page can be found [here](https://github.com/soloman817/CUDALab/blob/master/source/02.CUDALab%20Usage/02.Math%20Formatting%20on%20F%23%20Script.fsx).
 
 ## Inline Math
 
@@ -37,8 +37,8 @@ Some more examples:
 
 ## Block Math
 
-To write compilcated math, use block math by first line to be `$$$` and follow by latex code.
-All block math will be centerlized.
+To write compilcated math, use block math. The first line must be `$$$`, followed by the LaTex code.
+All block math is centered.
 
 $$$
 \begin{equation}
@@ -52,7 +52,7 @@ $$$
           + \cfrac{1}{a_3 + \cfrac{1}{a_4} } } }
 \end{equation}
 
-Latex array environment can also be used:
+LaTex array environments are also supported:
 
 $$$
 \begin{equation}

@@ -6,8 +6,9 @@ When developing CUDA kernels, we usually care about two things:
 - Correctness
 - Performance
 
-Alea.cuBase provides some utilities to help you do these things easier through
-`Alea.CUDA.Utilities.TestUtil` module.
+Alea.cuBase provides some utilities useful utilities in the module `Alea.CUDA.Utilities.TestUtil`
+to simplify testing and performance measurement of GPU algorithms.
+.
 *)
 
 #I @"..\packages\Alea.cuBase\lib\net40"
@@ -23,38 +24,38 @@ let worker = Worker.Default
 (**
 Each test implements `TestUtil.ITest<'InputT, 'OutputT>`. You need to implement:
 
-- `Name`: given the input (of `InputT`) and number of iterations, return a description on this test;
-- `Run`: given the input (of `InputT`) and number of iterations, return the output ( of `OutputT`)
-         and a performance string. Both output and performance string are optional. If output is `None`,
-         then no verification for the data. If performance is `None`, then no string will be printed
-         out in the performance column of the final report. the `iters` represents how many
-         iterations you need to performance this operation to finally get a average performance.
-- Interface `IDisposable`: for GPU test, it need to dispose some unmanaged stuff, like the program
-                           itself.
+- `Name`: given the input (of type `InputT`) and the number of iterations, it returns a description on this test;
+- `Run`: given the input (of type `InputT`) and the number of iterations, it returns the output (of type `OutputT`)
+         and a performance string. Both the output and the performance string are optional. If output is `None`,
+         then no verification for the data has been done. If performance is `None`, then no string will be printed
+         out in the performance column of the final report. The value `iters` defines how many
+         iterations are required in order to calculate the performance as a average of the calculation times.
+- Interface `IDisposable`: for a GPU test, some unmanaged resources, such as the program instance, may need to disposed.
 
-You should also noticed that each test is a test factory function. After given the transform function
-it became `unit -> ITest<'InputT, 'OutputT>`, this is because later in the runner, we must register
-test as factory function.
+Note that each test is a factory function. Calling a test with the transform function
+it returns a function `unit -> ITest<'InputT, 'OutputT>`. Later in the runner, the test has to be registered 
+as factory function.
 
-The first test we use a simple CPU single thread test. You can also code another CPU multiple thread 
-version, to match your CPU cores.
+The first test is a simple single threaded CPU test. The example can be extended in 
+a straightforward manner to a multi-thread version using all the avaiable CPU cores.
 *)
 let cpuSingleThread transform () =
     let run (input:'T[]) (iters:int) =
         let n = input.Length
         let output = Array.zeroCreate<'T> n
 
-        // Use a utility function tictoc to get the result and 
-        // timespace, its signature is:
+        // Use the utility function tictoc to get the result and 
+        // timespan. The signature is:
         // val tictoc : (unit -> 'T) -> 'T * TimeSpan
         let _, timespan = TestUtil.tictoc (fun _ ->
             for iter = 1 to iters do
                 for i = 0 to n - 1 do
                     output.[i] <- transform input.[i])
 
-        // Calculate the performance by its average time.
-        // performance is just a string, you can calculate
-        // more advanced measurement, like thoughput, bandwidth, etc.
+        // Calculate the performance as the average time.
+        // Performance is just a string, so that it is possible to return 
+        // more advanced performance measurement, such as thoughput, bandwidth, etc.
+        // or even algorithm specific figures. 
         let msecs = timespan.TotalMilliseconds
         let msec = msecs / (float iters)
         let performance = sprintf "%12.6f ms" msec
@@ -67,10 +68,10 @@ let cpuSingleThread transform () =
       interface IDisposable with member this.Dispose() = () }
 
 (**
-The GPU test is similar to CPU test, you can create it via different combination of blocks and threads.
-Also you need implement the `IDisposable` interface to dispose the program explicitly (actually if you 
-don't dispose the program explicitly it will also be disposed by GC, but it is a good habit to dispose
-unmanaged resource explicitly).
+The GPU test is similar to the CPU test. It explores different combination of block and grid sizes.
+This time we implement the `IDisposable` interface to dispose the program explicitly. Actually, if you 
+don't dispose the program explicitly, it will also be disposed by GC, but it is a good habit to dispose
+unmanaged resource explicitly.
 *)
 let gpu transform (blocks:int) (threads:int) () =
     let template = cuda {
@@ -128,17 +129,16 @@ let gpu transform (blocks:int) (threads:int) () =
       interface IDisposable with member this.Dispose() = program.Dispose() }
 
 (**
-You need implement `TestUtil.IRunner<'InputT, 'OutputT>` for a set of tests to be run:
+To run the tests we need to implement a `TestUtil.IRunner<'InputT, 'OutputT>` class for the set of tests to be run:
 
-- `Description`: return a description string for this test runner;
-- `Baseline`: one test must be set as baseline, then its output will be considered as 
-              the expected value, which will be used to compare with output generated from
-              other tests.
-- `Tests`: a list of `unit -> ITest<'InputT, 'OutputT>`. You can add splitter there. 
-           Elements in the list are factory functions to generate the tester, this is
-           because tests might implement their `IDisposable` interface, so the runner
-           will create those test and finally dispose them.
-- `Verify`: an optional function, if you provide it, then it will be used to do verification.
+- `Description`: returns a description string for this test runner;
+- `Baseline`: one test must be set as the baseline, then its output will be considered as 
+              the expected value. The results of the other tests are compared to
+              these expected values.
+- `Tests`: a list of functions `unit -> ITest<'InputT, 'OutputT>`, some of them can be a splitter. 
+           The elements in the list are factory functions to generate the tester. 
+           The runner will create the tests with the factory functions and finally dispose them.
+- `Verify`: an optional function, which, if provided, will do the verification.
 *)
 let runner description cpuTransform gpuTransform tol =
     { new TestUtil.IRunner<float[], float[]> with
