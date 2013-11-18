@@ -8,6 +8,8 @@ markdown support two styles:
 - to write an inline math: using `$ {latex} $`
 - to write a block of math: start a block by first line `$$$`
 
+Source of this page could be found [here](https://github.com/soloman817/CUDALab/blob/master/source/02.CUDALab%20Usage/02.Math%20Formatting%20on%20F%23%20Script.fsx).
+
 ## Inline Math
 
 A simple inline equation looks like $ \alpha + \beta + x^{2} = z^{2} $ or $ \frac{1}{2^{-32} - 1} $.
