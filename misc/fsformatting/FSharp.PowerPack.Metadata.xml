@@ -6254,8 +6254,53 @@
 <member name="">
 
 </member>
+<member name="P:FSharp.CompilerBinding.FSharpCompilerVersion.LatestKnown">
+<summary>
+ The current requested language version can be overriden by the user using environment variable.
+</summary>
+</member>
 <member name="">
 
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="T:FSharp.CompilerBinding.FSharpTargetFramework">
+<summary>
+ Target framework (used to find the right version of F# binaries)
+</summary>
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="M:FSharp.CompilerBinding.FSharpEnvironment.tryFsharpiScript(System.String)">
+<summary>
+ Try to find the F# compiler location by looking at the &quot;fsharpi&quot; script installed by F# packages
+</summary>
 </member>
 <member name="">
 
@@ -6317,12 +6362,30 @@
 <member name="">
 
 </member>
-<member name="M:Internal.Utilities.FSharpEnvironment.Option.ofString(System.String)">
+<member name="">
+
+</member>
+<member name="M:FSharp.CompilerBinding.FSharpEnvironment.Option.ofString(System.String)">
 <summary>
  Convert string into Option string where null and String.Empty result in None
 </summary>
 </member>
-<member name="T:Internal.Utilities.FSharpEnvironment.Option">
+<member name="T:FSharp.CompilerBinding.FSharpEnvironment.Option">
+
+</member>
+<member name="T:FSharp.CompilerBinding.FSharpEnvironment">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
 
 </member>
 <member name="T:Internal.Utilities.FSharpEnvironment">

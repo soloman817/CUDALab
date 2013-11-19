@@ -721,12 +721,22 @@
  The key can be preceeded by a space or other single whitespace thing.
 </summary>
 </member>
+<member name="M:FSharp.Markdown.Parser.|DelimitedLatexInlineMath|_|(Microsoft.FSharp.Collections.FSharpList{System.Char},Microsoft.FSharp.Collections.FSharpList{System.Char})">
+<summary>
+ This is similar to `List.Delimited`, but it skips over Latex inline math characters.
+</summary>
+</member>
 <member name="M:FSharp.Markdown.Parser.|DelimitedMarkdown|_|(Microsoft.FSharp.Collections.FSharpList{System.Char},Microsoft.FSharp.Collections.FSharpList{System.Char})">
 <summary>
  Matches a list if it starts with a sub-list that is delimited
  using the specified delimiters. Returns a wrapped list and the rest.
 
  This is similar to `List.Delimited`, but it skips over escaped characters.
+</summary>
+</member>
+<member name="M:FSharp.Markdown.Parser.|EscapedLatexInlineMathChar|_|(Microsoft.FSharp.Collections.FSharpList{System.Char})">
+<summary>
+ Escape dollar inside a LaTex inline math span.
 </summary>
 </member>
 <member name="M:FSharp.Markdown.Parser.|EscapedChar|_|(Microsoft.FSharp.Collections.FSharpList{System.Char})">
