@@ -104,7 +104,7 @@ let template transform = cuda {
         run ) }
 
 (**
-Write a test function. It accepts a unary function for CPU and a corresponding implementation for the GPU,
+Write a test function. It accepts an unary function for CPU and a corresponding implementation for the GPU,
 provides as a unary function expression.
 *)
 let test cpuTransform gpuTransform tol =
