@@ -16,6 +16,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		build.cmd = build.cmd
 		build.fsx = build.fsx
 		LICENSE = LICENSE
+		packages.cmd = packages.cmd
 		README.md = README.md
 	EndProjectSection
 EndProject
@@ -43,6 +44,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "source", "source", "{F1B334
 	ProjectSection(SolutionItems) = preProject
 		source\01.Getting Started.fsx = source\01.Getting Started.fsx
 		source\03.Performance Test.fsx = source\03.Performance Test.fsx
+		source\04.Heat PDE.fsx = source\04.Heat PDE.fsx
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "images", "images", "{86B13E0C-5A1D-4708-8DFE-A96964D56D27}"
@@ -64,7 +66,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02.CUDALab Usage", "02.CUDA
 		source\02.CUDALab Usage\02.Math Formatting on F# Script.fsx = source\02.CUDALab Usage\02.Math Formatting on F# Script.fsx
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{D63D6D8B-FE63-4A66-99C7-26AF00FA4730}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "CUDALab.D3D9", "lib\CUDALab.D3D9\CUDALab.D3D9.fsproj", "{E004ED6C-32FA-4616-BC92-5DC0B8F715CB}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E004ED6C-32FA-4616-BC92-5DC0B8F715CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E004ED6C-32FA-4616-BC92-5DC0B8F715CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E004ED6C-32FA-4616-BC92-5DC0B8F715CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E004ED6C-32FA-4616-BC92-5DC0B8F715CB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
@@ -73,5 +89,6 @@ Global
 		{85CE824D-064D-44D1-A6D1-02B7FA50E7A7} = {C466FF81-CB99-4D7A-95CB-30BE0A80DAFB}
 		{1575D468-7233-4B93-8CBA-16DFFAC5C1C7} = {F1B33433-C3DD-4906-AA0D-4756F32DA010}
 		{19CD2905-A596-4667-BA04-81CE9E9C53D8} = {F1B33433-C3DD-4906-AA0D-4756F32DA010}
+		{E004ED6C-32FA-4616-BC92-5DC0B8F715CB} = {D63D6D8B-FE63-4A66-99C7-26AF00FA4730}
 	EndGlobalSection
 EndGlobal

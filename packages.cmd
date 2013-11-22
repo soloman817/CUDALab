@@ -14,5 +14,3 @@ if not exist packages\SharpDX.Direct3D9\lib\net40\SharpDX.Direct3D9.dll (
 if not exist packages\SharpDX.RawInput\lib\net40\SharpDX.RawInput.dll (
 	.nuget\nuget.exe install SharpDX.RawInput -OutputDirectory packages -ExcludeVersion -Prerelease
 )
-packages\FAKE\tools\FAKE.exe build.fsx %*
-pause
