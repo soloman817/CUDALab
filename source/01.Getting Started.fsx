@@ -134,13 +134,12 @@ let test cpuTransform gpuTransform tol =
     let gpuResults, gpuTime = program.Run input
 
     // Verify the results.
-    let error = ref 0
-    (cpuResults, gpuResults) ||> Array.iter2 (fun cpuResult gpuResult ->
-        if abs (cpuResult - gpuResult) > tol then error := !error + 1)
+    let error = (cpuResults, gpuResults) ||> Array.fold2 (fun error cpuResult gpuResult -> 
+        if abs (cpuResult - gpuResult) > tol then error + 1 else error) 0
 
     // Print out final results.
-    printfn "n=%d:  (CPU %12.6f ms)  (GPU %10.6f ms)  (Error %d)"
-            n cpuTime gpuTime !error
+    printfn "n=%d: speedup %1.2f (CPU %12.6f ms)  (GPU %10.6f ms)  (Error %d)"
+            n (cpuTime/gpuTime) cpuTime gpuTime error
 
 (** Print the GPU device name. *)
 printfn "GPU: %s" Worker.Default.Device.Name
