@@ -337,8 +337,8 @@ let visual() =
         let selection = int32(Console.Read()) - 48
         examples.[selection]
 
-    let nx = 256
-    let ny = 256
+    let nx = 1024
+    let ny = 1024
     let tstop = 1.0
     let diffusionCoeff = 1.0
     let tstart = 0.0
