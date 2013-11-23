@@ -19,3 +19,9 @@ will be automatically added into the bottom of the generated HTML page.
 To build the output, you need run the `build.cmd`. But due to a bug you must have Alea.cuBase 
 license installed to run the `build.cmd` (This may be fixed in the future).
 
+The following sequence described a full build sequence:
+
+- Delete _packages_ directory in root directory.
+- Run `build.cmd RestorePackages` to restore packages.
+- Run `build.cmd` to build the html output.
+

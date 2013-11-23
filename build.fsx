@@ -208,7 +208,7 @@ let createDocument() =
     (rootdoc :?> Folder).AddDocument(MarkdownPage(Some rootdoc, "README.md"))
     rootdoc
 
-//let packages = [ "Alea.cuBase" ]
+//let packages = [ "Alea.cuBase"; "Alea.cuBase.Direct3D9" ]
 //
 //Target "RestorePackages" (fun _ ->
 //    let setParams param =
@@ -217,6 +217,8 @@ let createDocument() =
 //                     IncludePreRelease = true }
 //    packages
 //    |> List.iter (RestorePackageId setParams))
+
+Target "RestorePackages" DoNothing
 
 Target "CleanDocs" (fun _ ->
     CleanDirs [ outputDir ])

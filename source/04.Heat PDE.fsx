@@ -3,27 +3,26 @@
 
 *)
 
-#I @"..\packages\Alea.cuBase\lib\net40"
 #I @"..\packages\SharpDX\lib\net40"
 #I @"..\packages\SharpDX.Direct3D9\lib\net40"
 #I @"..\packages\SharpDX.RawInput\lib\net40"
-#r "Alea.CUDA.dll"
+#I @"..\packages\Alea.cuBase\lib\net40"
+#I @"..\packages\Alea.cuBase.Direct3D9\lib\net40"
 #r "SharpDX.dll"
 #r "SharpDX.Direct3D9.dll"
 #r "SharpDX.RawInput.dll"
-#load @"..\lib\CUDALab.D3D9\Application.fs"
-#load @"..\lib\CUDALab.D3D9\PlotterCommon.fs"
-#load @"..\lib\CUDALab.D3D9\SurfacePlotter.fs"
+#r "Alea.CUDA.dll"
+#r "Alea.CUDA.Direct3D9.dll"
 
 open System
 open System.Runtime.InteropServices
 open Microsoft.FSharp.Quotations
-open Alea.CUDA
-open Alea.CUDA.Utilities
 open SharpDX
 open SharpDX.Direct3D9
 open SharpDX.Windows
-open CUDALab.D3D9
+open Alea.CUDA
+open Alea.CUDA.Utilities
+open Alea.CUDA.Direct3D9
 
 (**
 Create a homogeneous grid between a and b of n points.
@@ -352,7 +351,7 @@ let visual() =
     let plotter = cuda {
         let! initCondKernel, xSweepKernel, ySweepKernel = example.Kernels
 
-        return Entry(fun program (ctx:Context) ->
+        return Entry(fun program (ctx:ApplicationContext) ->
             let worker = program.Worker
             let initCondKernel = program.Apply initCondKernel
             let xSweepKernel = program.Apply xSweepKernel
@@ -391,28 +390,19 @@ let visual() =
 
             let frame (time:float) =
                 let result =
-                    if !t0 < 0.0 then
-                        // first frame
-                        let t1 = time / example.LoopTime * example.TimeRatio
+                    let t1 = time / example.LoopTime * example.TimeRatio
+                    if !t0 < 0.0 || !t0 > t1 then
+                        // a new loop
                         t0 := 0.0
                         initCondKernelFunc nx ny tstart x.Ptr y.Ptr u0.Ptr
                         step !t0 t1
                         t0 := t1
-                        u0.Ptr, Some example.ValSpace
+                        u0.Ptr, None
                     else
-                        let t1 = time / example.LoopTime * example.TimeRatio
-                        if !t0 > t1 then
-                            // a new loop
-                            t0 := 0.0
-                            initCondKernelFunc nx ny tstart x.Ptr y.Ptr u0.Ptr
-                            step !t0 t1
-                            t0 := t1
-                            u0.Ptr, None
-                        else 
-                            // a step
-                            step !t0 t1
-                            t0 := t1
-                            u0.Ptr, None
+                        // a step
+                        step !t0 t1
+                        t0 := t1
+                        u0.Ptr, None
 
                 // just to check the max value
                 if false then
@@ -430,20 +420,21 @@ let visual() =
 
             let param : SurfacePlotter.AnimationParam<float> =
                 {
-                    Order = Array2DStorageOrder.RawMajor
-                    Rows = nx
-                    Cols = ny
+                    Order = MatrixStorageOrder.RowMajor
+                    RowLength = nx
+                    ColLength = ny
                     RowSpace = { MinValue = xMin; MaxValue = xMax; Ratio = 1.0 }
                     ColSpace = { MinValue = yMin; MaxValue = yMax; Ratio = 1.0 }
+                    ValSpace = Some example.ValSpace
                     RowPtr = x.Ptr
                     ColPtr = y.Ptr
                     Frame = frame
                     LoopTime = Some example.LoopTime
                 }
 
-            SurfacePlotter.animationLoop real param ctx ) }
+            SurfacePlotter.animationLoop ctx param ) }
 
-    let param : Application.Param =
+    let param : ApplicationParam =
         {
             CUDADevice = Device.Devices.[0]
             FormTitle = "Heat PDE"
