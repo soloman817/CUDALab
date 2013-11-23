@@ -27,10 +27,10 @@ let outputDir = "output"
 let (@@) a b = Path.Combine(a, b)
 
 let htmlEncode (text:string) =
-    text.Replace("<", "&lt;")
+    text.Replace("&", "&amp;")
+        .Replace("<", "&lt;")
         .Replace(">", "&gt;")
         .Replace("\"", "&quot;")
-        .Replace("&", "&amp;")
 
 let normalizeDocumentName (name:string) =   
     if name = "README" then 0, "Index", "index"
