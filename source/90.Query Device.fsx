@@ -1,5 +1,5 @@
 (**
-# Queary Device
+# Query Device
 
 *)
 
