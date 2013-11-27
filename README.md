@@ -1,4 +1,4 @@
-# CUDA Lab
+# CUDA Lab Project
 
 There is a live website of this project at [http://www.aleacubase.com/cudalab](http://www.aleacubase.com/cudalab).
 You can also fork or clone the source code from [GitHub](https://github.com/soloman817/CUDALab).
