@@ -47,7 +47,7 @@ let cpuSingleThread transform () =
         // Use the utility function tictoc to get the result and 
         // timespan. The signature is:
         // val tictoc : (unit -> 'T) -> 'T * TimeSpan
-        let _, timespan = TestUtil.tictoc (fun _ ->
+        let _, timespan = Timing.tictoc (fun _ ->
             for iter = 1 to iters do
                 for i = 0 to n - 1 do
                     output.[i] <- transform input.[i])

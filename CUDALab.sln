@@ -44,6 +44,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "source", "source", "{F1B334
 		source\01.Getting Started.fsx = source\01.Getting Started.fsx
 		source\03.Performance Test.fsx = source\03.Performance Test.fsx
 		source\04.Heat PDE.fsx = source\04.Heat PDE.fsx
+		source\05.Malloc Efficiency.fsx = source\05.Malloc Efficiency.fsx
 		source\90.Query Device.fsx = source\90.Query Device.fsx
 	EndProjectSection
 EndProject
